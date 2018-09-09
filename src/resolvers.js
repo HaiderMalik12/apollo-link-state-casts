@@ -1,3 +1,5 @@
-export const defaults = {};
+export const defaults = {
+	tasks: []
+};
 
 export const resolvers = {};

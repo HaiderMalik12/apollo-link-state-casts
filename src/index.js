@@ -17,7 +17,9 @@ const typeDefs = `
    text: String!
    completed: Boolean!
  }
-
+type Query {
+  tasks : [Task]
+}
 `;
 //create apollo Clint
 const client = new ApolloClient({
