@@ -15,6 +15,7 @@ const TaskList = () => {
 	return (
 		<Query query={TASKS_QUERY}>
 			{({ data: { tasks } }) => {
+				debugger;
 				return (
 					<ul>
 						{tasks.map(task => (

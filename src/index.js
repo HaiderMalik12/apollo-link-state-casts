@@ -20,6 +20,9 @@ const typeDefs = `
 type Query {
   tasks : [Task]
 }
+type Mutation {
+  addTask (text: String!) : Task
+}
 `;
 //create apollo Clint
 const client = new ApolloClient({
