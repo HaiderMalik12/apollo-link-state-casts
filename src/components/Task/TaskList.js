@@ -1,6 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import Task from './Task';
 
 const TASKS_QUERY = gql`
 	{
@@ -17,9 +18,9 @@ const TaskList = () => {
 			{({ data: { tasks } }) => {
 				debugger;
 				return (
-					<ul>
+					<ul className="list-group">
 						{tasks.map(task => (
-							<li key={task.id}>{task.text}</li>
+							<Task key={task.id} {...task} />
 						))}
 					</ul>
 				);

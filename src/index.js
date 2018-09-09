@@ -21,7 +21,8 @@ type Query {
   tasks : [Task]
 }
 type Mutation {
-  addTask (text: String!) : Task
+	addTask (text: String!) : Task
+	toggleTask(id: Int!) : Task
 }
 `;
 //create apollo Clint

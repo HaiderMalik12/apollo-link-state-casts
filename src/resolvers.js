@@ -33,6 +33,19 @@ export const resolvers = {
 			cache.writeData({ data });
 			// return a new task from this method
 			return newTask;
+		},
+		toggleTask: (_, { id }, { cache }) => {
+			const taskId = `TaskItem:${id}`; //__typename:id
+			const fragment = gql`
+				fragment completedTask on TaskItem {
+					completed
+				}
+			`;
+			const task = cache.readFragment({ fragment, id: taskId });
+			const data = { ...task, completed: !task.completed };
+
+			cache.writeData({ id: taskId, data });
+			return null;
 		}
 	}
 };
