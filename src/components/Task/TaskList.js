@@ -10,16 +10,27 @@ const TASKS_QUERY = gql`
 			completed
 			text
 		}
+		filter @client
 	}
 `;
+const getFilteredTasks = (filter, tasks) => {
+	switch (filter) {
+		case 'SHOW_ALL':
+			return tasks;
+		case 'COMPLETED':
+			return tasks.filter(task => task.completed === true);
+		case 'ACTIVE':
+			return tasks.filter(task => task.completed === false);
+	}
+};
 const TaskList = () => {
 	return (
 		<Query query={TASKS_QUERY}>
-			{({ data: { tasks } }) => {
+			{({ data: { tasks, filter } }) => {
 				debugger;
 				return (
 					<ul className="list-group">
-						{tasks.map(task => (
+						{getFilteredTasks(filter, tasks).map(task => (
 							<Task key={task.id} {...task} />
 						))}
 					</ul>

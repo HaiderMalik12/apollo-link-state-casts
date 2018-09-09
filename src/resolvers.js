@@ -1,7 +1,8 @@
 import gql from 'graphql-tag';
 
 export const defaults = {
-	tasks: []
+	tasks: [],
+	filter: 'SHOW_ALL'
 };
 let nextTaskId = 0;
 export const resolvers = {
@@ -45,6 +46,14 @@ export const resolvers = {
 			const data = { ...task, completed: !task.completed };
 
 			cache.writeData({ id: taskId, data });
+			return null;
+		},
+		updateFilter: (_, { filterValue }, { cache }) => {
+			const data = {
+				filter: filterValue,
+				__typename: 'Filter'
+			};
+			cache.writeData({ data });
 			return null;
 		}
 	}

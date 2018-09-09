@@ -23,6 +23,7 @@ type Query {
 type Mutation {
 	addTask (text: String!) : Task
 	toggleTask(id: Int!) : Task
+	updateFilter(filterValue: String!) : Task
 }
 `;
 //create apollo Clint

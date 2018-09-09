@@ -1,6 +1,7 @@
 import React from 'react';
 import TaskList from './Task/TaskList';
 import TaskForm from './Task/TaskForm';
+import TaskFooter from './Task/TaskFooter';
 
 const App = () => (
 	<div className="container" style={{ textAlign: 'center' }}>
@@ -8,6 +9,7 @@ const App = () => (
 		<div style={{ marginTop: '20px' }}>
 			<TaskForm />
 			<TaskList />
+			<TaskFooter />
 		</div>
 	</div>
 );
